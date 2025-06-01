@@ -326,7 +326,7 @@ public class basicProgrames {
 	}
 
 	public static void arrayHashSet() {
-		System.out.println("Mayank k Gautam");
+		System.out.println("Mayank kg Gautam");
 	}
 	
 	
