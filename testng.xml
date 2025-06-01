@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Auto Suite">
+  <test name="UDDA Test1">
+    	<groups>
+  		<run>
+			<include name="smk1"/>
+  		</run>
+  	</groups>
+    <classes>
+      <class name="udda.LauncchBrowser"/>
+     </classes>
+  </test> <!-- Test -->
+  <test name="UDDA Test2">
+    	<groups>
+  		<run>
+			<include name="smk2"/>
+  		</run>
+  	</groups>
+    <classes>
+      <class name="udda.LauncchBrowser"/>
+     </classes>
+  </test>
+  
+</suite> <!-- Suite -->
