@@ -325,6 +325,9 @@ public class basicProgrames {
 		
 	}
 
+	public static void arrayHashSet() {
+		
+	}
 	
 	
 
