@@ -118,7 +118,7 @@ public class basicProgrames {
 	
 	public static void arrayListLoop() {
 		ArrayList<String> arr= new ArrayList<String>();
-		arr.add("Mayank");
+		arr.add("Mayank1");
 		arr.add("Gautam");
 		for(String str: arr) {
 			System.out.println(str);
