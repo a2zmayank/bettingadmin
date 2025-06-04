@@ -3,6 +3,7 @@ package udda;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Scanner;
 
@@ -327,9 +328,22 @@ public class basicProgrames {
 	}
 
 	public static void arrayHashSet() {
-		System.out.println("Mayank kg Gautam");
+		HashSet<Integer> set= new HashSet<>();
+		set.add(2);
+		set.add(5);
+		set.add(3);
+		System.out.println(set);
+		Iterator it = set.iterator();
+		while(it.hasNext()) {
+			System.out.print(it.next());
+		}
+		System.out.println();	
+		
+		for(int i: set) {
+			System.out.println(i);
+		}
+		set.clear();
+		System.out.println(set);
 	}
 	
-	
-
 }
