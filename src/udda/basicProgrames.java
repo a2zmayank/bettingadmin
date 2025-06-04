@@ -36,6 +36,7 @@ public class basicProgrames {
 		advanceArrayList();
 		largeValue();
 		removeSpaceFromString();
+		arrayHashSet();
 	}
 	
 	public static void addnum() {
