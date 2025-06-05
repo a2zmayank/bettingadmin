@@ -100,8 +100,5 @@ public class BrowserLaunch {
 		System.out.println("\n");
 		driver.switchTo().window(tabs.get(0));
 		}
-		
-		
 	}
-	
-	}
+}
