@@ -1,6 +1,8 @@
 package udda;
 
 import static org.testng.Assert.assertNotNull;
+
+import java.sql.Driver;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -35,7 +37,8 @@ public class BrowserLaunch {
 	     //  getTitle(driver);
 	        //clickLinkFullStack(driver);
 	       // headerMenu(driver);
-	        openMenuNewTab(driver);
+	      //  openMenuNewTab(driver);
+	        iFrameGet(driver);
 	    }
 
 	}
@@ -101,4 +104,17 @@ public class BrowserLaunch {
 		driver.switchTo().window(tabs.get(0));
 		}
 	}
+
+	public static void iFrameGet(WebDriver driver) throws InterruptedException {
+		driver.navigate().to("https://www.w3schools.com/java/java_hashset.asp");
+		Thread.sleep(10000);
+		driver.findElement(By.xpath("//div[@id='mainLeaderboard']/div/div/iframe"));
+		driver.switchTo().frame(driver.findElement(By.xpath("//div[@id='mainLeaderboard']/div/div/iframe")));
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//div[@id='google_image_div']")).click();
+		driver.switchTo().parentFrame();
+		System.out.println(driver.getTitle());
+		driver.close();
+	}
+
 }
