@@ -16,6 +16,7 @@ public class basicProgrames {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		basicProgrames obj= new basicProgrames(2,3);
 		addnum();
 		getStringWordssount();
 		reverseStr();
@@ -38,6 +39,7 @@ public class basicProgrames {
 		largeValue();
 		removeSpaceFromString();
 		arrayHashSet();
+		arrayHashMap();
 	}
 	
 	public static void addnum() {
@@ -333,7 +335,7 @@ public class basicProgrames {
 		set.add(5);
 		set.add(3);
 		System.out.println(set);
-		Iterator it = set.iterator();
+		Iterator<Integer> it = set.iterator();
 		while(it.hasNext()) {
 			System.out.print(it.next());
 		}
@@ -342,8 +344,34 @@ public class basicProgrames {
 		for(int i: set) {
 			System.out.println(i);
 		}
-		set.clear();
+		
 		System.out.println(set);
+		if(set.contains(5)) {
+			System.out.println("Yes");
+			set.remove(5);
+		}
+		
+		System.out.println(set);
+		System.out.println("End HashSet........."+"\n");
 	}
+
+	public static void arrayHashMap() {
+		HashMap<String,Integer> map= new HashMap<String,Integer>();
+		map.put("India", 1);
+		map.put("US", 3);
+		map.put("Pakistan", 3);
+		System.out.println(map);
+		System.out.println(map.get("India"));
+		System.out.println(map.containsKey("India"));
+		System.out.println(map.containsValue(2));
+		System.out.println(map.remove("India"));
+		System.out.println(map);
+	}
+
+	public basicProgrames(int a, int b ) {
+		int c= a+b;
+		System.out.println("Constractor= "+c);
+	}
+
 	
 }
