@@ -1,10 +1,7 @@
 package udda;
 
 import static org.testng.Assert.assertNotNull;
-
-import java.awt.Desktop.Action;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
