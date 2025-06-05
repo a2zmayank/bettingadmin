@@ -2,7 +2,6 @@ package udda;
 
 import static org.testng.Assert.assertNotNull;
 
-import java.sql.Driver;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -30,7 +29,7 @@ public class BrowserLaunch {
 	        // Maximize the browser
 	        driver.manage().window().maximize();
 
-	        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 	        // Launch Website
 	        driver.get("https://www.geeksforgeeks.org/");
 	        
@@ -38,7 +37,8 @@ public class BrowserLaunch {
 	        //clickLinkFullStack(driver);
 	       // headerMenu(driver);
 	      //  openMenuNewTab(driver);
-	        iFrameGet(driver);
+	       // iFrameGet(driver);
+	        htmlTable(driver);
 	    }
 
 	}
@@ -117,4 +117,39 @@ public class BrowserLaunch {
 		driver.close();
 	}
 
+	public static void htmlTable(WebDriver driver) throws InterruptedException {
+		driver.navigate().to("https://www.w3schools.com/mysql/mysql_select.asp");
+		Thread.sleep(2000);
+		
+		List<WebElement> column= driver.findElements(By.xpath("//div[@class='w3-responsive']/table/tbody/tr[2]/td"));
+		int columnSize= column.size();
+		System.out.println(columnSize);
+		
+		List<WebElement> row= driver.findElements(By.xpath("//div[@class='w3-responsive']/table/tbody/tr"));
+		int rowSize= row.size();
+		System.out.println(rowSize);
+		
+		List<WebElement> tableHeader= driver.findElements(By.xpath("//div[@class='w3-responsive']/table/tbody/tr[1]/th"));
+		for(int j=1; j<=tableHeader.size();j++) {
+			System.out.print(driver.findElement(By.xpath("//div[@class='w3-responsive']/table/tbody/tr[1]/th["+j+"]"))
+					.getText()+", ");
+			
+		}
+		System.out.println();
+		for(int i=2;i<=rowSize;i++) {
+			for(int j=1; j<=columnSize;j++) {
+				System.out.print(driver.findElement(By.xpath("//div[@class='w3-responsive']/table/tbody/tr["+i+"]/td["+j+"]"))
+						.getText()+",  ");
+				
+						
+			}
+			System.out.println();
+			
+		}
+		
+		
+		
+	}
+
+	
 }
