@@ -5,12 +5,17 @@ import static org.testng.Assert.assertNotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BrowserLaunch {
 
@@ -32,13 +37,14 @@ public class BrowserLaunch {
 	        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 	        // Launch Website
 	        driver.get("https://www.geeksforgeeks.org/");
-	        
+	        //driver.get("https://demoqa.com/alerts");
 	     //  getTitle(driver);
 	        //clickLinkFullStack(driver);
 	       // headerMenu(driver);
 	      //  openMenuNewTab(driver);
 	       // iFrameGet(driver);
-	        htmlTable(driver);
+	       // htmlTable(driver);
+	        browserAlert(driver);
 	    }
 
 	}
@@ -151,5 +157,50 @@ public class BrowserLaunch {
 		
 	}
 
+	public static void browserAlert(WebDriver driver) throws InterruptedException {
+		driver.navigate().to("https://demoqa.com/alerts");
+		Thread.sleep(5000);
+		
+		try {
+		driver.findElement(By.id("alertButton")).click();
+		Alert alert= driver.switchTo().alert();
+		System.out.println(alert.getText());
+		Thread.sleep(2000);
+		alert.accept();
+		Thread.sleep(2000);
+		} catch(Exception e) {
+			System.out.println("unexpected alert not present");
+		}
+		
+		try {
+		driver.findElement(By.id("timerAlertButton")).click();		
+		WebDriverWait wait= new WebDriverWait(driver, 10);
+		wait.until(ExpectedConditions.alertIsPresent());
+		Alert alert1= driver.switchTo().alert();
+		System.out.println(alert1.getText());
+		Thread.sleep(2000);
+		alert1.accept();
+		}catch(Exception e) {
+			System.out.println("unexpected alert not present");
+		}
+		
+		driver.findElement(By.id("promtButton")).click();
+		Thread.sleep(2000);
+		Alert alert2= driver.switchTo().alert();
+		System.out.println(alert2.getText());
+		Thread.sleep(2000);
+		alert2.sendKeys("Mayank Gautam");
+		Thread.sleep(2000);
+		alert2.accept();
+		
+		driver.findElement(By.id("confirmButton")).click();
+		Thread.sleep(2000);
+		Alert alert3= driver.switchTo().alert();
+		System.out.println(alert3.getText());
+		Thread.sleep(2000);
+		alert3.accept();
+		
+	}
+	
 	
 }
