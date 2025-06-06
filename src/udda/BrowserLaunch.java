@@ -2,6 +2,9 @@ package udda;
 
 import static org.testng.Assert.assertNotNull;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -44,7 +47,14 @@ public class BrowserLaunch {
 	      //  openMenuNewTab(driver);
 	       // iFrameGet(driver);
 	       // htmlTable(driver);
-	        browserAlert(driver);
+	       // browserAlert(driver);
+	        try {
+				robotClass(driver);
+			} catch (AWTException e) {
+				// TODO Auto-generated catch block
+				System.out.println("Exception Occured");
+				e.printStackTrace();
+			}
 	    }
 
 	}
@@ -201,6 +211,12 @@ public class BrowserLaunch {
 		alert3.accept();
 		
 	}
-	
+
+	public static void robotClass(WebDriver driver) throws InterruptedException, AWTException {
+		driver.navigate().to("https://demoqa.com/alerts");
+		Thread.sleep(3000);
+		driver.findElement(By.id("alertButton")).click();
+		Alert alert= driver.switchTo().alert();
+		}
 	
 }
